@@ -1,0 +1,60 @@
+%% Tool 
+theta=0:.1:.75*pi;
+r=2; %%radius
+xcent=0;
+ycent=0;
+xcord=xcent +(r*cos(theta));
+ycord=ycent +(r*sin(theta));
+patch([xcord,-4,-5,2.3],[ycord,-2,-5,-5],'blue') %% insert at z=0 2d view
+hold on
+theta=0:.1:.75*pi;
+r=2;
+hcent=0;h=2;
+xcord=xcent +(r*cos(theta));
+ycord=ycent +(r*sin(theta));
+zcord=(hcent.*theta) +h;
+patch([xcord,-4,-5,2.3],[ycord,-2,-5,-5],[zcord,h,h,h],'blue'); %% insert at z=2 2d 
+view(3)
+patch([-5,2.3,2.3,-5,-5],[-5,-5,-5,-5,-5],[0,0,h,h,0],'blue');
+hold on
+patch([-5,-5,-4,-1.33255,-1.33255,-4],[-5,-5,-2,1.49141,1.49141,-2],[0,h,h,h,0,0],'blue');
+hold on
+patch([2.3,2.3,2,2],[-5,-5,0,0],[0,h,h,0],'blue');
+hold on
+r=2;
+[x1,y1,z1]=cylinder(r)
+h=2;
+z1=z1*h;
+surf(x1,y1,z1,'FaceColor','blue')
+hold on
+xcenter=-1.35;
+ycenter=-15;
+zcenter=3;z=0;
+radius=10;
+thetas=linspace(0,2*pi);
+x3=xcenter +(radius*cos(thetas));
+y3=ycenter +(radius*sin(thetas));
+z3=(z.*thetas) +zcenter;
+patch(x3,y3,z3,'blue'), %% top portion of tool holder
+hold on
+radius=10;
+[x2,y2,z2]=cylinder(radius)
+h=4;
+z2=z2*h;
+surf((x2-1.35),(y2-15),(z2-1),'FaceColor','blue') %% tool holder middle part
+hold on
+xcenter=-1.35;
+ycenter=-15;
+zcenter=-1;z=0;
+radius=10;
+thetas=linspace(0,2*pi);
+x3=xcenter +(radius*cos(thetas));
+y3=ycenter +(radius*sin(thetas));
+z3=(z.*thetas) +zcenter;
+patch(x3,y3,z3,'blue'), %% bottom portion of tool holder
+hold on
+patch([-5,-5,-5.79067,-5.79067,-1.35,-1.35,2.3,2.80415,2.80415,2.3],[-5,-5,-6.04006,-6.04006,-5,-5,-5,-5.90368,-5.90368,-5],[2,0,0,2,2,0,0,0,2,2],'blue')
+hold on
+patch([-5,-5.79067,-1.35,],[-5,-6.04006,-5,],[2,2,2],'blue')
+hold on
+patch([2.80415,2.3,-1.35],[-5.9368,-5,-5],[2,2,2],'blue')
